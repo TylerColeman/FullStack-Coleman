@@ -1,4 +1,4 @@
 Tyler Coleman
 Email:tylerblake.tc@gmail.com
 
-!(https://github.com/TylerColeman/FullStack-Coleman/issues/1)
+![alt text](https://github.com/TylerColeman/FullStack-Coleman/issues/1)
