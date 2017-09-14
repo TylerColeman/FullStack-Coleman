@@ -1,1 +1,0 @@
-{"virtualbox":{"/var/www":{"guestpath":"/var/www","hostpath":"C:/Users/Tyler/Desktop/FullStack-Coleman/Assignments/earththoughts/www","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/Tyler/Desktop/FullStack-Coleman/Assignments/earththoughts","disabled":false,"__vagrantfile":true}}}
