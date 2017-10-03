@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Earth Thoughts!</title>
+
+    <!-- Bootstrap core CSS -->
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron-narrow.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <style>
+    #main_image {
+        background-image: url("https://i.redd.it/fsipwrv7fgkz.jpg");
+        background-color: #17234E;
+        margin-bottom: 0;`enter code here`
+        min-height: 50%;
+        background-repeat: no-repeat;
+        background-position: center;
+        -webkit-background-size: cover;
+        background-size: cover;
+        height: 500px;
+        object-fit: cover;
+    }
+  </style>
+    <style>
+      #shower_thought {
+          color: #ffffff;
+          text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+    
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header clearfix">
+        <h3 class="text-muted">Earth Thoughts</h3>
+      </div>
+
+      <div class="jumbotron" id="main_image">
+        <p class="lead" id="shower_thought"></p>
+      </div>
+      <p><a class="btn btn-lg btn-success" href="#" role="button" onclick="get_New_Image(); get_New_Thought();">Get Another!</a></p>
+
+
+      <footer class="footer">
+        <p>&copy; 2016 Company, Inc.</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+            function get_New_Image() {
+              console.log( "ready!" );
+              $.get( "http://localhost:5050/get_image", function( data ) {
+              
+                  console.log(data.url)
+                  $('#main_image').css('background-image','url('+data.url+')');
+              });
+          };
+
+          function get_New_Thought(){
+            $.get( "http://localhost:5050/get_thought", function( data ) {
+              
+              console.log( "ready2!" );
+                  console.log(data.url)
+                  //replace the htm at id: "Shower_Though" with the sentence
+                  //found in the data from http://localhost:5050/get_thought
+                  shower_thought.innerHTML=data.sentence
+              });
+          };
+          //Get a fresh thought and image on page refresh
+          $(get_New_Image())
+          $(get_New_Thought())
+
+    </script>
+  </body>
+</html>
