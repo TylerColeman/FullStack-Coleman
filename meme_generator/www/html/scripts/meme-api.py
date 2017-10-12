@@ -153,6 +153,7 @@ def user(action=None):
     """
     unique_vals = ['email','username']
     if action == 'new':
+        print("hello")
         # create empty document 
         document = {}
 
