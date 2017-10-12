@@ -255,8 +255,8 @@ def image():
     """
     pass
 
-@app.route('/meme', methods=['POST','GET','DELETE'])
-def meme():
+@app.route('/meme/<action>', methods=['POST','GET','DELETE'])
+def meme(action=None):
     """
     Meme Document:
     {
@@ -293,7 +293,23 @@ def meme():
         - tag (key word search)
         - userid or email of owner ('anonymous' otherwise)
     """
-    pass
+    if action == 'new':
+        # create empty document 
+        document = {}
+
+        count = client['memes_db']['memes'].find().count()
+        max_id = count + 2
+
+        # build document to insert
+        for k,v in request.form.items():
+            document[k] = v
+        document['_id'] = max_id
+        _id = client['memes_db']['memes'].insert(document)
+
+        if type(_id) is int:
+            return jsonify({"success":True})
+        else:
+            return jsonify({"success":False,"error":"mongo error?"}) 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=5050)
